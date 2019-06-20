@@ -1,0 +1,128 @@
+[
+  {
+    "Pais": "Mexico",
+    "2000": 1787.940,
+    "2009": 2383.744,
+    "CambioPorcentual": 33
+  },
+  {
+    "Pais": "Brasil",
+    "2000": 1509.464,
+    "2009": 1922.000,
+    "CambioPorcentual": 27
+  },
+  {
+    "Pais": "Argentina",
+    "2000": 326.935,
+    "2009": 643.066,
+    "CambioPorcentual": 97
+  },
+  {
+    "Pais": "Colombia",
+    "2000": 322.002,
+    "2009": 580.904,
+    "CambioPorcentual": 80
+  },
+  {
+    "Pais": "Peru",
+    "2000": 162.280,
+    "2009": 268.707,
+    "CambioPorcentual": 66
+  },
+  {
+    "Pais": "Venezuela",
+    "2000": 174.620,
+    "2009": 160.000,
+    "CambioPorcentual": -8
+  },
+  {
+    "Pais": "Chile",
+    "2000": 109.755,
+    "2009": 137.000,
+    "CambioPorcentual": 25
+  },
+  {
+    "Pais": "Paraguay",
+    "2000": 67.609,
+    "2009": 127.619,
+    "CambioPorcentual": 89
+  },
+  {
+    "Pais": "Guatemala",
+    "2000": 81.000,
+    "2009": 127.224,
+    "CambioPorcentual": 57
+  },
+  {
+    "Pais": "Cuba",
+    "2000": 75.751,
+    "2009": 106.779,
+    "CambioPorcentual": 41
+  },
+  {
+    "Pais": "Ecuador",
+    "2000": 72.150,
+    "2009": 93.587,
+    "CambioPorcentual": 30
+  },
+  {
+    "Pais": "Republica Dominicana",
+    "2000": 58.700,
+    "2009": 91.932,
+    "CambioPorcentual": 57
+  },
+  {
+    "Pais": "Bolivia",
+    "2000": 38.935,
+    "2009": 68.600,
+    "CambioPorcentual": 76
+  },
+  {
+    "Pais": "El Salvador",
+    "2000": 61.278,
+    "2009": 64.250,
+    "CambioPorcentual": 5
+  },
+  {
+    "Pais": "Uruguay",
+    "2000": 37.000,
+    "2009": 54.000,
+    "CambioPorcentual": 46
+  },
+  {
+    "Pais": "Costa Rica",
+    "2000": 40.958,
+    "2009": 51.720,
+    "CambioPorcentual": 26
+  },
+  {
+    "Pais": "Honduras",
+    "2000": 41.241,
+    "2009": 51.313,
+    "CambioPorcentual": 24
+  },
+  {
+    "Pais": "Panama",
+    "2000": 12.380,
+    "2009": 23.938,
+    "CambioPorcentual": 97
+  },
+  {
+    "Pais": "Nicaragua",
+    "2000": 19.706,
+    "2009": 23.221,
+    "CambioPorcentual": 18
+  },
+  {
+    "Pais": "Puerto Rico",
+    "2000": 8.877,
+    "2009": 11.993,
+    "CambioPorcentual": 35
+  },
+  {
+    "Pais": "Total",
+    "2000": 5008.581,
+    "2009": 6991.597,
+    "CambioPorcentual": "??"
+  }
+ ]

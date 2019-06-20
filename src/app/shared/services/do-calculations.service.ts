@@ -1,0 +1,83 @@
+import { Injectable, SimpleChange } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+
+// tslint:disable: no-string-literal
+// tslint:disable: prefer-const
+// tslint:disable: variable-name
+// tslint:disable: comment-format
+export class DoCalculationsService {
+
+  constructor() { }
+
+  obtenerPromedio(datos: any[]) {
+    let cantidadElementos: number = datos.length - 1;
+    let μ_2000: number = 0;
+    let μ_2009: number = 0;
+
+    datos.forEach(elementoActual => {
+      //Calcular el promedio para ambos años y guardarlo en cada item
+      elementoActual['P(Xi)'] = [];
+      elementoActual['P(Xi)']['2000'] = Number(elementoActual['2000']) / cantidadElementos;
+      elementoActual['P(Xi)']['2009'] = Number(elementoActual['2009']) / cantidadElementos;
+
+      //Calcular la media aritmetica para ambos años y guardarla en cada item
+      elementoActual['(Xi)P(Xi)'] = [];
+      elementoActual['(Xi)P(Xi)']['2000'] = Number(elementoActual['2000']) * elementoActual['P(Xi)']['2000'];
+      elementoActual['(Xi)P(Xi)']['2009'] = Number(elementoActual['2009']) *  elementoActual['P(Xi)']['2009'];
+
+      //Acumular los μ en la variable temporal para luego asignarlos al array de total
+      μ_2000 += elementoActual['(Xi)P(Xi)']['2000'];
+      μ_2009 += elementoActual['(Xi)P(Xi)']['2009'];
+
+      //Asignar el acumulado de μ al Total
+      if (elementoActual['Pais'] === 'Total') {
+        elementoActual['μ'] = [];
+        elementoActual['μ']['2000'] = μ_2000;
+        elementoActual['μ']['2009'] = μ_2009;
+      }
+
+    });
+
+    return datos;
+  }
+
+  obtenerVarianza(datos: any[]){
+    let total = datos.filter(x => x['Pais'] === 'Total');
+    let σ_2000 = 0;
+    let σ_2009 = 0;
+
+    datos.forEach(elementoActual => {
+
+      //Calcular el valor de (Xi-μ)^2 para la linea
+      elementoActual['(Xi-μ)^2'] = [];
+      elementoActual['(Xi-μ)^2']['2000'] = Math.pow((Number(elementoActual['2000']) - total[0]['μ']['2000']), 2);
+      elementoActual['(Xi-μ)^2']['2009'] = Math.pow((Number(elementoActual['2009']) - total[0]['μ']['2009']), 2);
+
+      //Calcular el valor de (Xi-μ)^2*P(Xi)
+      elementoActual['(Xi-μ)^2*P(Xi)'] = [];
+      elementoActual['(Xi-μ)^2*P(Xi)']['2000'] = elementoActual['(Xi-μ)^2']['2000'] * elementoActual['P(Xi)']['2000'];
+      elementoActual['(Xi-μ)^2*P(Xi)']['2009'] = elementoActual['(Xi-μ)^2']['2009'] * elementoActual['P(Xi)']['2009'];
+
+      //Calcular el valor de σ^2
+      σ_2000 += elementoActual['(Xi-μ)^2*P(Xi)']['2000'];
+      σ_2009 += elementoActual['(Xi-μ)^2*P(Xi)']['2009'];
+
+      //Asignar el acumulado de σ^2 al Total
+      if (elementoActual['Pais'] === 'Total') {
+        elementoActual['σ^2'] = [];
+        elementoActual['σ^2']['2000'] = σ_2000;
+        elementoActual['σ^2']['2009'] = σ_2009;
+
+        //Asignar el porcentaje de desviacion
+        elementoActual['σ'] = [];
+        elementoActual['σ']['2000'] = Math.sqrt(σ_2000);
+        elementoActual['σ']['2009'] = Math.sqrt(σ_2009);
+      }
+
+    });
+  }
+
+}

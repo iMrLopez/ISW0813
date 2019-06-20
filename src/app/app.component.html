@@ -1,21 +1,84 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="container">
+  <div class="row">
+      <div class="col-lg-3">
+          <h1 class="my-4">ISW0813</h1>
+          <h2>Estadistica inferencial</h2>
+          <!--<div class="list-group">
+              <a href="#" class="list-group-item">Category 1</a>
+              <a href="#" class="list-group-item">Category 2</a>
+              <a href="#" class="list-group-item">Category 3</a>
+          </div>-->
+          <div class="card">
+            <div class="card-header">
+              Media aritmetica
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><b>2000:</b> {{data[data.length-1]['μ']['2000'] | number:'3.1-4'}}</li>
+              <li class="list-group-item"><b>2009:</b> {{data[data.length-1]['μ']['2009'] | number:'3.1-4'}}</li>
+            </ul>
+          </div>
+          <hr>
+          <div class="card">
+            <div class="card-header">
+              Varianza
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><b>2000:</b> {{data[data.length-1]['σ^2']['2000'] | number:'3.1-4'}}</li>
+              <li class="list-group-item"><b>2009:</b> {{data[data.length-1]['σ^2']['2009'] | number:'3.1-4'}}</li>
+            </ul>
+          </div>
+          <hr>
+          <div class="card">
+            <div class="card-header">
+              Desviacion estandar
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><b>2000:</b> {{data[data.length-1]['σ']['2000'] | number:'3.1-4'}}</li>
+              <li class="list-group-item"><b>2009:</b> {{data[data.length-1]['σ']['2009'] | number:'3.1-4'}}</li>
+            </ul>
+          </div>
+      </div>
+      <div class="col-lg-9">
+          <div id="carouselExampleIndicators" class="carousel slide my-4">
+              <img class="d-block img-fluid" src="../assets/header.jpg" alt="First slide">
+          </div>
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="card">
+                      <div class="card-header">Datos</div>
+                      <div class="card-body">
+                          <table class="table">
+                              <thead>
+                                  <th>Pais</th>
+                                  <th>2000</th>
+                                  <th>2009</th>
+                                  <th>% Cambio</th>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let item of data">
+                                      <td>{{item.Pais}}</td>
+                                      <td>{{item[2000]}}</td>
+                                      <td>{{item[2009]}}</td>
+                                      <td>{{item.CambioPorcentual}} %</td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
 
-<router-outlet></router-outlet>
+          <br>
+          <router-outlet></router-outlet>
+      </div>
+  </div>
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+  <div class="container">
+      <p class="m-0 text-center text-white">&copy; Marny Lopez Lopez 2019</p>
+  </div>
+  <!-- /.container -->
+</footer>
