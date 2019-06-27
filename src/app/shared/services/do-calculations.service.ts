@@ -12,6 +12,7 @@ export class DoCalculationsService {
 
   constructor() { }
 
+  //Calculo el promedio para el array de datos que recibo y lo retorno
   obtenerPromedio(datos: any[]) {
     let cantidadElementos  = datos.length - 1;
     let μ_2000 = 0;
@@ -44,6 +45,7 @@ export class DoCalculationsService {
     return datos;
   }
 
+  //Calculo la varianza para el array de datos pasado como parametro y lo devuelvo
   obtenerVarianza(datos: any[]){
     let total = datos.filter(x => x['Pais'] === 'Total');
     let σ_2000 = 0;
