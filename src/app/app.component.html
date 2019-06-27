@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="background-color: rgba(241,241,241,.2);">
   <!-- CABECERA DE LA PAGINA -->
   <div class="row">
     <div class="col-md-2">
@@ -139,22 +139,22 @@
 
                     <!-- Si no es la linea del total muestra el detalle de la linea actual, si es la linea del total muestra niu-->
                     <td *ngIf="item.Pais != 'Total'">
-                      {{ item["(Xi)P(Xi)"][varSelectedTab] }}
+                      {{ item["(Xi)P(Xi)"][varSelectedTab] | number: "3.1-5" }}
                     </td>
                     <td *ngIf="item.Pais === 'Total'">
-                      {{ item["μ"][varSelectedTab] | number: "3.1-4" }}
+                      {{ item["μ"][varSelectedTab] | number: "3.1-5" }}
                     </td>
 
                     <td *ngIf="item.Pais != 'Total'">
-                      {{ item["(Xi-μ)^2"][varSelectedTab] }}
+                      {{ item["(Xi-μ)^2"][varSelectedTab] | number: "3.1-5" }}
                     </td>
                     <td *ngIf="item.Pais === 'Total'"></td>
 
                     <td *ngIf="item.Pais != 'Total'">
-                      {{ item["(Xi-μ)^2*P(Xi)"][varSelectedTab] }}
+                      {{ item["(Xi-μ)^2*P(Xi)"][varSelectedTab] | number: "3.1-5" }}
                     </td>
                     <td *ngIf="item.Pais === 'Total'">
-                      {{ item["σ^2"][varSelectedTab] | number: "3.1-4" }}
+                      {{ item["σ^2"][varSelectedTab] | number: "3.1-5" }}
                     </td>
 
                     <td>{{ item.CambioPorcentual }} %</td>

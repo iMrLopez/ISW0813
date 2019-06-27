@@ -26,6 +26,7 @@ export class AppComponent {
   valorCambiado(event: any, pais, anno) { // without type info
     let paisCambiado = this.data.filter(x => x['Pais'] === pais);
     paisCambiado[0][anno] = event.target.value;
+    this.recalculateTotal();
     this.doCalculation();
   }
 
@@ -33,6 +34,19 @@ export class AppComponent {
   doCalculation() {
     this.service.obtenerPromedio(this.data);
     this.service.obtenerVarianza(this.data);
+  }
+
+
+  recalculateTotal() { //TODO esto no funciona
+    let total = 0;
+    this.data.forEach(element => {
+      total += Number(element[this.varSelectedTab]);
+
+      if (element['Pais'] === 'Total') {
+        element[this.varSelectedTab] = total;
+      }
+
+    });
   }
 
 }
