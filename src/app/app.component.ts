@@ -10,9 +10,14 @@ import { DoCalculationsService } from './shared/services/do-calculations.service
 export class AppComponent {
   title = 'ISW0813';
   data: any = json;
+  varSelectedTab: number = 2000;
 
   constructor(private service: DoCalculationsService) {
     this.service.obtenerPromedio(this.data);
     this.service.obtenerVarianza(this.data);
+  }
+
+  selectedTab(selected) {
+    this.varSelectedTab = (selected);
   }
 }

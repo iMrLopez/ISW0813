@@ -1,64 +1,103 @@
 <div class="container">
-  <div class="row">
-      <div class="col-lg-3">
-          <h1 class="my-4">ISW0813</h1>
-          <h2>Estadistica inferencial</h2>
-          <!--<div class="list-group">
-              <a href="#" class="list-group-item">Category 1</a>
-              <a href="#" class="list-group-item">Category 2</a>
-              <a href="#" class="list-group-item">Category 3</a>
-          </div>-->
-          <div class="card">
-            <div class="card-header">
-              Media aritmetica
+  <!-- CABECERA DE LA PAGINA -->
+    <div class="row">
+        <div class="col-md-2">
+            <h1 class="my-4">ISW0813</h1>
+            <h2>Estadistica inferencial</h2>
+            <!--<div class="list-group">
+                <a href="#" class="list-group-item">Category 1</a>
+                <a href="#" class="list-group-item">Category 2</a>
+                <a href="#" class="list-group-item">Category 3</a>
+            </div>-->
+        </div>
+        <div class="col-md-10">
+            <div id="carouselExampleIndicators" class="carousel slide my-4">
+                <img class="d-block img-fluid" src="../assets/header.jpg" alt="First slide">
             </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item"><b>2000:</b> {{data[data.length-1]['μ']['2000'] | number:'3.1-4'}}</li>
-              <li class="list-group-item"><b>2009:</b> {{data[data.length-1]['μ']['2009'] | number:'3.1-4'}}</li>
-            </ul>
-          </div>
-          <hr>
-          <div class="card">
-            <div class="card-header">
-              Varianza
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item"><b>2000:</b> {{data[data.length-1]['σ^2']['2000'] | number:'3.1-4'}}</li>
-              <li class="list-group-item"><b>2009:</b> {{data[data.length-1]['σ^2']['2009'] | number:'3.1-4'}}</li>
-            </ul>
-          </div>
-          <hr>
-          <div class="card">
-            <div class="card-header">
-              Desviacion estandar
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item"><b>2000:</b> {{data[data.length-1]['σ']['2000'] | number:'3.1-4'}}</li>
-              <li class="list-group-item"><b>2009:</b> {{data[data.length-1]['σ']['2009'] | number:'3.1-4'}}</li>
-            </ul>
-          </div>
+        </div>
       </div>
-      <div class="col-lg-9">
-          <div id="carouselExampleIndicators" class="carousel slide my-4">
-              <img class="d-block img-fluid" src="../assets/header.jpg" alt="First slide">
+      <hr>
+  <!-- TARJETAS DE RESUMEN -->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                Media aritmetica
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><b>2000:</b> {{data[data.length-1]['μ']['2000'] | number:'3.1-4'}}</li>
+                <li class="list-group-item"><b>2009:</b> {{data[data.length-1]['μ']['2009'] | number:'3.1-4'}}</li>
+              </ul>
+            </div>
+        </div>
+            <hr>
+            <div class="col-md-4">
+
+            <div class="card">
+              <div class="card-header">
+                Varianza
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><b>2000:</b> {{data[data.length-1]['σ^2']['2000'] | number:'3.1-4'}}</li>
+                <li class="list-group-item"><b>2009:</b> {{data[data.length-1]['σ^2']['2009'] | number:'3.1-4'}}</li>
+              </ul>
+            </div>
           </div>
+            <hr>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                Desviacion estandar
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><b>2000:</b> {{data[data.length-1]['σ']['2000'] | number:'3.1-4'}}</li>
+                <li class="list-group-item"><b>2009:</b> {{data[data.length-1]['σ']['2009'] | number:'3.1-4'}}</li>
+              </ul>
+            </div>
+        </div>
+    </div>
+    <hr>
+  <!-- DETALLE DE LOS DATOS -->
+  <div class="row">
+      <div class="col-md-12">
           <div class="row">
               <div class="col-md-12">
+                  <nav>
+                      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a [attr.class]="varSelectedTab === 2000? 'nav-item nav-link active':'nav-item nav-link'" id="nav-home-tab" data-toggle="tab" href="#nav-home" (click)="selectedTab(2000)" role="tab" aria-controls="nav-home">Datos del 2000</a>
+                        <a [attr.class]="varSelectedTab === 2009? 'nav-item nav-link active':'nav-item nav-link'" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" (click)="selectedTab(2009)" role="tab" aria-controls="nav-profile" [attr.aria-selected]="varSelectedTab === 2009? true:null">Datos del 2009</a>
+                      </div>
+                  </nav>
                   <div class="card">
-                      <div class="card-header">Datos</div>
+                      <div class="card-header">Datos para el año {{varSelectedTab}}</div>
                       <div class="card-body">
                           <table class="table">
                               <thead>
                                   <th>Pais</th>
-                                  <th>2000</th>
-                                  <th>2009</th>
-                                  <th>% Cambio</th>
+                                  <th>Xi</th>
+                                  <th>P(Xi)</th>
+                                  <th>(Xi)P(Xi)</th>
+                                  <th>(Xi-μ)^2</th>
+                                  <th>(Xi-μ)^2*P(Xi)</th>
+                                  <th>Cambio</th>
                               </thead>
                               <tbody>
                                   <tr *ngFor="let item of data">
                                       <td>{{item.Pais}}</td>
                                       <td>{{item[2000]}}</td>
-                                      <td>{{item[2009]}}</td>
+                                      <td>{{item['P(Xi)'][varSelectedTab] }}</td>
+
+                                      <!-- Si no es la linea del total muestra el detalle de la linea actual, si es la linea del total muestra niu-->
+                                      <td *ngIf="item.Pais != 'Total'">{{item['(Xi)P(Xi)'][varSelectedTab] }}</td>
+                                      <td *ngIf="item.Pais === 'Total'">{{item['μ'][varSelectedTab] | number:'3.1-4'}}</td>
+
+                                      <td *ngIf="item.Pais != 'Total'">{{item['(Xi-μ)^2'][varSelectedTab] }}</td>
+                                      <td *ngIf="item.Pais === 'Total'"></td>
+
+
+                                      <td *ngIf="item.Pais != 'Total'">{{item['(Xi-μ)^2*P(Xi)'][varSelectedTab] }}</td>
+                                      <td *ngIf="item.Pais === 'Total'">{{item['σ^2'][varSelectedTab] | number:'3.1-4'}}</td>
+
                                       <td>{{item.CambioPorcentual}} %</td>
                                   </tr>
                               </tbody>
@@ -72,6 +111,7 @@
           <router-outlet></router-outlet>
       </div>
   </div>
+  <hr>
 </div>
 <!-- /.container -->
 

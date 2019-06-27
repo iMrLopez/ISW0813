@@ -13,20 +13,20 @@ export class DoCalculationsService {
   constructor() { }
 
   obtenerPromedio(datos: any[]) {
-    let cantidadElementos: number = datos.length - 1;
-    let μ_2000: number = 0;
-    let μ_2009: number = 0;
+    let cantidadElementos  = datos.length - 1;
+    let μ_2000 = 0;
+    let μ_2009 = 0;
 
     datos.forEach(elementoActual => {
       //Calcular el promedio para ambos años y guardarlo en cada item
       elementoActual['P(Xi)'] = [];
-      elementoActual['P(Xi)']['2000'] = Number(elementoActual['2000']) / cantidadElementos;
-      elementoActual['P(Xi)']['2009'] = Number(elementoActual['2009']) / cantidadElementos;
+      elementoActual['P(Xi)']['2000'] = (elementoActual['2000']) / datos[cantidadElementos]['2000'];
+      elementoActual['P(Xi)']['2009'] = (elementoActual['2009']) / datos[cantidadElementos]['2009'];
 
       //Calcular la media aritmetica para ambos años y guardarla en cada item
       elementoActual['(Xi)P(Xi)'] = [];
-      elementoActual['(Xi)P(Xi)']['2000'] = Number(elementoActual['2000']) * elementoActual['P(Xi)']['2000'];
-      elementoActual['(Xi)P(Xi)']['2009'] = Number(elementoActual['2009']) *  elementoActual['P(Xi)']['2009'];
+      elementoActual['(Xi)P(Xi)']['2000'] = (elementoActual['2000']) * elementoActual['P(Xi)']['2000'];
+      elementoActual['(Xi)P(Xi)']['2009'] = (elementoActual['2009']) *  elementoActual['P(Xi)']['2009'];
 
       //Acumular los μ en la variable temporal para luego asignarlos al array de total
       μ_2000 += elementoActual['(Xi)P(Xi)']['2000'];
