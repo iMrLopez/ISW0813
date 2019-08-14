@@ -22,62 +22,131 @@
   </div>
   <hr />
   <!-- TARJETAS DE RESUMEN -->
-  <div class="row" id="resumen">
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-header">
-          Media aritmetica
+  <div  id="resumen">
+    <!-- Ejercicios 1,2,3-->
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">
+            Media aritmetica
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <b>2000:</b>
+              {{ data[data.length - 1]["μ"]["2000"] | number: "3.1-4" }}
+            </li>
+            <li class="list-group-item">
+              <b>2009:</b>
+              {{ data[data.length - 1]["μ"]["2009"] | number: "3.1-4" }}
+            </li>
+          </ul>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <b>2000:</b>
-            {{ data[data.length - 1]["μ"]["2000"] | number: "3.1-4" }}
-          </li>
-          <li class="list-group-item">
-            <b>2009:</b>
-            {{ data[data.length - 1]["μ"]["2009"] | number: "3.1-4" }}
-          </li>
-        </ul>
+      </div>
+      <hr />
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">
+            Varianza
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <b>2000:</b>
+              {{ data[data.length - 1]["σ^2"]["2000"] | number: "3.1-4" }}
+            </li>
+            <li class="list-group-item">
+              <b>2009:</b>
+              {{ data[data.length - 1]["σ^2"]["2009"] | number: "3.1-4" }}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <hr />
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">
+            Desviacion estandar
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <b>2000:</b>
+              {{ data[data.length - 1]["σ"]["2000"] | number: "3.1-4" }}
+            </li>
+            <li class="list-group-item">
+              <b>2009:</b>
+              {{ data[data.length - 1]["σ"]["2009"] | number: "3.1-4" }}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
     <hr />
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-header">
-          Varianza
+    <!-- Ejercicio 4-->
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">
+            Muestra y Significancia
+          </div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <b>Muestra:</b>
+                  <input
+                  type="number"
+                  class="form-control"
+                  value="{{PruebaHipotesis.Muestra}}"
+                  (change)="setPruebaHipotesisEnvironment()"
+                  style="WIDTH: 100%;"
+                  disabled>
+              </li>
+              <li class="list-group-item">
+                <b>Significancia:</b>
+                <input
+                  type="number"
+                  class="form-control"
+                  value="{{PruebaHipotesis.Significancia}}"
+                  (change)="setPruebaHipotesisEnvironment()"
+                  style="WIDTH: 100%;"
+                  disabled>
+              </li>
+            </ul>
+          </div>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <b>2000:</b>
-            {{ data[data.length - 1]["σ^2"]["2000"] | number: "3.1-4" }}
-          </li>
-          <li class="list-group-item">
-            <b>2009:</b>
-            {{ data[data.length - 1]["σ^2"]["2009"] | number: "3.1-4" }}
-          </li>
-        </ul>
+      </div>
+      <hr />
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">
+            Resultado
+          </div>
+          <div class="card-body">
+              <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <b>t:</b>
+                    <p>{{ PruebaHipotesis.f1 }}</p>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Z:</b>
+                    <p>{{ PruebaHipotesis.Z['val1'] }} || {{ PruebaHipotesis.Z['val2'] | number: "1.1-4" }}</p>
+                  </li>
+                </ul>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">
+            Respuesta
+          </div>
+          <div class="card-body">
+            <p>Se <b>{{(PruebaHipotesis.Z['val1'] > 0)?'acepta':'rechaza'}}</b> H0 con un valor de significancia de {{PruebaHipotesis.Significancia}} , que el año 2009 fue <b>{{(PruebaHipotesis.Z['val1'] > 0)?'mejor':'peor'}}</b> que el 2000</p>
+          </div>
+        </div>
       </div>
     </div>
     <hr />
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-header">
-          Desviacion estandar
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <b>2000:</b>
-            {{ data[data.length - 1]["σ"]["2000"] | number: "3.1-4" }}
-          </li>
-          <li class="list-group-item">
-            <b>2009:</b>
-            {{ data[data.length - 1]["σ"]["2009"] | number: "3.1-4" }}
-          </li>
-        </ul>
-      </div>
-    </div>
   </div>
-  <hr />
   <!-- DETALLE DE LOS DATOS -->
   <div class="row" id="datosCrudos">
     <div class="col-md-12">
@@ -134,9 +203,15 @@
                 <tbody>
                   <tr *ngFor="let item of data">
                     <td>{{ item.Pais }}</td>
-                    <td><input type="number" (change)="valorCambiado($event,item.Pais,varSelectedTab)" class="form-control" value="{{item[2000]}}" style="WIDTH: 100%;"></td>
+                    <td>
+                      <input
+                        type="number"
+                        (change)="valorCambiado($event,item.Pais,varSelectedTab)"
+                        class="form-control"
+                        value="{{item[2000]}}"
+                        style="WIDTH: 100%;">
+                      </td>
                     <td>{{ item["P(Xi)"][varSelectedTab] }}</td>
-
                     <!-- Si no es la linea del total muestra el detalle de la linea actual, si es la linea del total muestra niu-->
                     <td *ngIf="item.Pais != 'Total'">
                       {{ item["(Xi)P(Xi)"][varSelectedTab] | number: "3.1-5" }}

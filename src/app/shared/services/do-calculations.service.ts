@@ -82,4 +82,14 @@ export class DoCalculationsService {
     });
   }
 
+  // Obtiene el valor de T
+  obtenerValordeT(PruebaHipotesis: any) {
+    return (PruebaHipotesis.μ['2009'] - PruebaHipotesis.μ['2000']) / (PruebaHipotesis.Sx['2000'] / Math.sqrt(PruebaHipotesis.Muestra));
+  }
+
+  //Obtiene el valor de Z para H0 y H1
+  obtenerValordeZ(PruebaHipotesis: any) {
+    return (PruebaHipotesis.Z['val1'] - PruebaHipotesis.μ['2000']) / PruebaHipotesis.Sx['2000'];
+  }
+
 }
