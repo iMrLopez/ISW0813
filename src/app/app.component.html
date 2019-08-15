@@ -125,10 +125,12 @@
                     <b>t:</b>
                     <p>{{ PruebaHipotesis.f1 }}</p>
                   </li>
-                  <li class="list-group-item">
+                  <!--
+                    <li class="list-group-item">
                     <b>Z:</b>
-                    <p>{{ PruebaHipotesis.Z['val1'] }} || {{ PruebaHipotesis.Z['val2'] | number: "1.1-4" }}</p>
+                    <p>{{ PruebaHipotesis.Z['val1'] }} || {{ 1.729 | number: "1.1-4" }} {{ PruebaHipotesis.Z['val2'] | number: "1.1-4" }} </p>
                   </li>
+                -->
                 </ul>
           </div>
         </div>
@@ -208,7 +210,7 @@
                         type="number"
                         (change)="valorCambiado($event,item.Pais,varSelectedTab)"
                         class="form-control"
-                        value="{{item[2000]}}"
+                        value="{{item[varSelectedTab]}}"
                         style="WIDTH: 100%;">
                       </td>
                     <td>{{ item["P(Xi)"][varSelectedTab] }}</td>

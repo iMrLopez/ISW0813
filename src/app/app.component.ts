@@ -36,7 +36,6 @@ export class AppComponent {
     this.PruebaHipotesis.Z = { val1: 0.5 - this.PruebaHipotesis.Significancia, val2:  0};
     this.PruebaHipotesis.Z.val2 = this.service.obtenerValordeZ(this.PruebaHipotesis); // Formula de Z
 
-    console.log(this.PruebaHipotesis.f1);
   }
 
 
@@ -52,6 +51,7 @@ export class AppComponent {
     paisCambiado[0][anno] = event.target.value;
     this.recalculateTotal();
     this.doCalculation();
+    this.setPruebaHipotesisEnvironment();
   }
 
   // Llama a las funciones en el servicio en el path app/shared/services/do-calculations.service.spec.ts

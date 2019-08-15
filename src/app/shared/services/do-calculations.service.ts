@@ -36,7 +36,7 @@ export class DoCalculationsService {
       //Asignar el acumulado de μ al Total
       if (elementoActual['Pais'] === 'Total') {
         elementoActual['μ'] = [];
-        elementoActual['μ']['2000'] = μ_2000;
+        elementoActual['μ']['2000'] = μ_2000; // Promedio del valor actual
         elementoActual['μ']['2009'] = μ_2009;
       }
 
@@ -46,7 +46,7 @@ export class DoCalculationsService {
   }
 
   //Calculo la varianza para el array de datos pasado como parametro y lo devuelvo
-  obtenerVarianza(datos: any[]){
+  obtenerVarianza(datos: any[]) {
     let total = datos.filter(x => x['Pais'] === 'Total');
     let σ_2000 = 0;
     let σ_2009 = 0;
@@ -70,13 +70,13 @@ export class DoCalculationsService {
       //Asignar el acumulado de σ^2 al Total
       if (elementoActual['Pais'] === 'Total') {
         elementoActual['σ^2'] = [];
-        elementoActual['σ^2']['2000'] = σ_2000;
-        elementoActual['σ^2']['2009'] = σ_2009;
+        elementoActual['σ^2']['2000'] = σ_2000; // Varianza del elemento actual
+        elementoActual['σ^2']['2009'] = σ_2009; // Varianza del elemento actual
 
         //Asignar el porcentaje de desviacion
         elementoActual['σ'] = [];
-        elementoActual['σ']['2000'] = Math.sqrt(σ_2000);
-        elementoActual['σ']['2009'] = Math.sqrt(σ_2009);
+        elementoActual['σ']['2000'] = Math.sqrt(σ_2000); // Desviacion estandar del elemento actual
+        elementoActual['σ']['2009'] = Math.sqrt(σ_2009); // Desviacion estandar del elemento actual
       }
 
     });
@@ -84,6 +84,7 @@ export class DoCalculationsService {
 
   // Obtiene el valor de T
   obtenerValordeT(PruebaHipotesis: any) {
+    // (P2009 - P2000) / (De2000 / ~2Muestra)
     return (PruebaHipotesis.μ['2009'] - PruebaHipotesis.μ['2000']) / (PruebaHipotesis.Sx['2000'] / Math.sqrt(PruebaHipotesis.Muestra));
   }
 
