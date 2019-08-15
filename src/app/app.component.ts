@@ -63,8 +63,9 @@ export class AppComponent {
 
   recalculateTotal() { // TODO esto no funciona
     let total = 0;
+
     this.data.forEach(element => {
-      total += (element[this.varSelectedTab]);
+      total = Number(element[this.varSelectedTab])  + total;
 
       if (element['Pais'] === 'Total') {
         element[this.varSelectedTab] = total;
