@@ -61,7 +61,7 @@ export class AppComponent {
   }
 
 
-  recalculateTotal() { // TODO esto no funciona
+  recalculateTotal() { // Recalcular el total
     let total = 0;
 
     this.data.forEach(element => {
